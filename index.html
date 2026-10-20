@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d12">
+<title>Pivot — Your Ordinary Day. An Extraordinary Narrative.</title>
+<style>
+:root{--bg:#0b0d12;--panel:#11151d;--panel2:#171d28;--line:#293242;--text:#f4f5f7;--muted:#a7b0c0;--lime:#d5ff62;--pink:#ff83d0;--blue:#79b9ff;--radius:22px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#18202b 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.shell{max-width:1440px;margin:auto;padding:24px clamp(16px,3vw,42px) 44px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:26px}.brand{font-weight:900;letter-spacing:-.06em;font-size:32px}.brand .p{color:var(--lime)}.tagline{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d2d8e3;margin-left:22px}
+.topbrand{display:flex;align-items:center;gap:12px}.pill-note{color:var(--muted);font-size:13px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.panel{background:linear-gradient(145deg,rgba(20,25,35,.97),rgba(13,17,24,.98));border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,2.5vw,32px);min-width:0;box-shadow:0 18px 60px #0002}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(27px,3vw,40px);line-height:1.08;letter-spacing:-.04em;margin:9px 0 12px}h1 em{font-style:normal;color:var(--lime)}h2{font-size:clamp(24px,2.5vw,34px);letter-spacing:-.04em;line-height:1.12;margin:9px 0 12px}h3{font-size:18px;margin:0}.intro{color:var(--muted);margin-bottom:22px;max-width:62ch}.counter{float:right;background:#202734;border-radius:999px;padding:9px 14px;font-weight:800;font-variant-numeric:tabular-nums}.counter.full{color:var(--lime)}
+.carousel{height:202px;position:relative;display:flex;align-items:center;justify-content:center;margin:16px 0 24px}
+.feature{position:relative;width:min(310px,68%);height:194px;border:2px solid var(--lime);border-radius:23px;background:linear-gradient(145deg,#161d28,#0d1118);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;z-index:2;box-shadow:0 12px 36px #0003}
+.feature .emoji{font-size:36px;margin-bottom:8px}.feature .name{font-size:19px;font-weight:800;line-height:1.25}.feature .hint{font-size:12px;color:var(--muted);margin-top:9px}
+.side-card{position:absolute;width:31%;height:158px;border:1px solid var(--line);border-radius:18px;background:#111620;color:#a8b1c2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;opacity:.8}.side-card.left{left:2%}.side-card.right{right:2%}.side-card .emoji{font-size:26px;margin-bottom:6px}.side-card span:last-child{font-size:13px;line-height:1.25}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;border:1px solid #8da53f;background:#111821;color:var(--lime);border-radius:50%;width:42px;height:42px;font-size:25px;display:grid;place-items:center}.arrow.prev{left:-6px}.arrow.next{right:-6px}.dots{position:absolute;bottom:-3px;display:flex;gap:7px;z-index:3}.dot{width:7px;height:7px;border-radius:50%;background:#4c5667}.dot.active{background:var(--lime)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.filter{border:1px solid transparent;background:#202734;color:#dbe1eb;padding:8px 14px;border-radius:999px;font-size:13px}.filter.active{background:var(--lime);color:#11150d;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.moment{min-height:88px;border:1px solid #303b4d;background:#111721;border-radius:15px;color:#f3f5f8;padding:13px 12px;display:flex;align-items:center;gap:10px;text-align:left;position:relative;transition:.15s}.moment:hover{border-color:#8b9a65;transform:translateY(-1px)}.moment.selected{border:2px solid var(--lime);padding:12px 11px;background:#182019}.moment .emoji{font-size:23px;flex-shrink:0}.moment .label{font-size:13px;line-height:1.25;font-weight:650}.check{position:absolute;right:7px;top:6px;color:var(--lime);font-size:12px;font-weight:900}.moment.selected .label{padding-right:7px}
+.custom{display:flex;gap:8px;margin-top:14px}.custom input{min-width:0;flex:1;background:#0d1118;border:1px solid #303b4d;border-radius:12px;color:var(--text);padding:12px 14px}.btn{border:1px solid #465166;background:#1b2230;color:var(--text);border-radius:13px;padding:11px 15px;font-weight:750}.btn:hover{filter:brightness(1.12)}.btn.primary{background:var(--lime);border-color:var(--lime);color:#10140a}.btn.outline{background:transparent}.btn:disabled{opacity:.4;cursor:not-allowed}.left-foot{font-size:12px;color:var(--muted);margin:12px 0 0}
+.outputhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.scribble{color:#dce5f5;font-size:12px;letter-spacing:.06em;transform:rotate(-5deg);max-width:120px;text-align:center}.post{background:#0e1219;border:1px solid #293444;border-radius:19px;padding:22px;margin:22px 0 16px;min-height:380px;white-space:pre-wrap;line-height:1.62;font-size:15px}.post .posttop{display:flex;align-items:center;gap:10px;margin-bottom:17px}.avatar{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(140deg,#b5caff,#7067aa);color:#151a27;font-weight:900;font-size:19px}.person{font-weight:750}.subline{font-size:11px;color:var(--muted);line-height:1.4}.postbody{white-space:pre-wrap}.hashtags{color:var(--blue);margin-top:16px}.actions{display:flex;flex-wrap:wrap;gap:10px}.actions .btn{flex:1;min-width:135px}.status{min-height:20px;color:var(--lime);font-size:12px;margin-top:10px}
+@media(max-width:950px){.layout{grid-template-columns:1fr}.post{min-height:280px}.tagline{display:none}}
+@media(max-width:520px){.shell{padding:15px 12px 28px}.panel{padding:17px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.moment{min-height:80px;padding:10px}.moment .label{font-size:12px}.feature{width:70%;height:170px}.carousel{height:185px}.side-card{height:140px}.post{padding:16px}.custom{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header><div class="topbrand"><div class="brand"><span class="p">P</span>IVOT<sup style="font-size:10px;letter-spacing:0">™</sup></div><div class="tagline">Your ordinary day. An extraordinary narrative.</div></div><div class="pill-note">Same day. Different energy.</div></header>
+<main class="layout">
+<section class="panel">
+<div class="counter" id="counter">0/3 selected</div><div class="eyebrow">01 / What happened today?</div>
+<h1>Choose <em>up to 3</em> moments</h1><p class="intro">Pick ordinary moments. We'll turn them into an unnecessarily profound story about leadership, resilience, and personal growth.</p>
+<div class="carousel" aria-label="Achievement carousel">
+<button class="arrow prev" id="prev" aria-label="Previous achievement">‹</button><div class="side-card left" id="sideLeft"></div><div class="feature" id="feature"></div><div class="side-card right" id="sideRight"></div><button class="arrow next" id="next" aria-label="Next achievement">›</button><div class="dots" id="dots"></div>
+</div>
+<div class="filters" id="filters"></div><div class="grid" id="moments"></div>
+<div class="custom"><input id="customInput" maxlength="100" placeholder="Something else from your very human life…"><button class="btn" id="addCustom">+ Add moment</button></div>
+<p class="left-foot" id="selectionHint">Choose up to three moments. The magic is in the connection between them.</p>
+</section>
+<section class="panel">
+<div class="outputhead"><div><div class="eyebrow">02 / Your LinkedIn post</div><h2>From ordinary to iconic</h2><p class="intro">One connected storyline. Unreasonable confidence. A lesson nobody asked for.</p></div><div class="scribble">SAME DAY.<br>DIFFERENT ENERGY.</div></div>
+<div class="post"><div class="posttop"><div class="avatar">Y</div><div><div class="person">You</div><div class="subline">Personal Growth Enthusiast | Lifelong Learner | Turning Everyday Moments into Opportunities<br>Just now · ◉</div></div></div><div class="postbody" id="postBody" aria-live="polite">Your next breakthrough may be hiding in the most ordinary part of your day.
+
+Choose up to three moments on the left. I'll connect them into one deeply unnecessary lesson about life, leadership, and becoming your best self.</div></div>
+<div class="actions"><button class="btn primary" id="copy">▢ Copy post</button><button class="btn outline" id="moreLinkedin">✧ Make it more LinkedIn</button><button class="btn outline" id="reroll">⟳ Try another version</button></div><div class="status" id="status" aria-live="polite"></div>
+</section>
+</main>
+</div>
+<script>
+const items=[
+{label:"Sleeping in",emoji:"🛏️",cat:"At home",theme:"restraint",frame:"choosing recovery over performative busyness"},
+{label:"Scrolling social media",emoji:"📱",cat:"Social",theme:"attention",frame:"conducting an informal audit of the attention economy"},
+{label:"Gaming until 4am",emoji:"🎮",cat:"Chaos",theme:"performance",frame:"running high-pressure simulations with immediate feedback"},
+{label:"Overthinking a text",emoji:"💬",cat:"Social",theme:"communication",frame:"stress-testing a communication strategy before deployment"},
+{label:"Eating snacks for dinner",emoji:"🍕",cat:"At home",theme:"adaptability",frame:"building an agile nutrition model under resource constraints"},
+{label:"Refreshing the parcel tracking page",emoji:"📦",cat:"Productivity",theme:"uncertainty",frame:"practising uncertainty management while monitoring a changing timeline"},
+{label:"Binge-watching a show",emoji:"📺",cat:"Wellbeing",theme:"pattern",frame:"studying long-form narrative, pacing, and human motivation"},
+{label:"Procrastinating an assignment",emoji:"💻",cat:"Productivity",theme:"friction",frame:"mapping the gap between intention and execution"},
+{label:"Having an existential crisis",emoji:"🌀",cat:"Chaos",theme:"direction",frame:"revisiting the mission statement before the next growth phase"},
+{label:"Avoiding a phone call",emoji:"📵",cat:"Social",theme:"boundaries",frame:"evaluating communication channels and emotional bandwidth"},
+{label:"Doing laundry",emoji:"🧺",cat:"At home",theme:"systems",frame:"designing a repeatable process for operational continuity"},
+{label:"Cleaning one tiny corner",emoji:"🧽",cat:"At home",theme:"momentum",frame:"creating a proof of concept for incremental change"},
+{label:"Making a to-do list instead of starting",emoji:"📝",cat:"Productivity",theme:"planning",frame:"mistaking strategic planning for execution, then learning from it"},
+{label:"Taking a nap",emoji:"😴",cat:"Wellbeing",theme:"recovery",frame:"protecting the most overlooked resource: sustainable energy"},
+{label:"Going to the supermarket hungry",emoji:"🛒",cat:"Chaos",theme:"decisions",frame:"observing decision-making under less-than-ideal conditions"},
+{label:"Re-reading an old message",emoji:"🔎",cat:"Social",theme:"reflection",frame:"reopening a closed case in search of new context"},
+{label:"Buying something I don't need",emoji:"🛍️",cat:"Chaos",theme:"priorities",frame:"conducting an unscheduled experiment in value perception"},
+{label:"Watering a plant",emoji:"🪴",cat:"At home",theme:"patience",frame:"investing in outcomes that refuse to respond to quarterly targets"},
+{label:"Waiting for someone to reply",emoji:"⌛",cat:"Social",theme:"uncertainty",frame:"learning to separate what I can influence from what I cannot"},
+{label:"Watching productivity videos",emoji:"🎧",cat:"Productivity",theme:"execution",frame:"researching optimisation while postponing the live experiment"},
+{label:"Ordering takeaway again",emoji:"🥡",cat:"At home",theme:"tradeoffs",frame:"making a resource-allocation decision with imperfect information"},
+{label:"Ignoring my alarm",emoji:"⏰",cat:"Wellbeing",theme:"priorities",frame:"renegotiating a commitment with my most immediate stakeholder"},
+{label:"Getting lost on a walk",emoji:"🚶",cat:"Wellbeing",theme:"adaptability",frame:"testing a strategy in an environment without a fixed roadmap"},
+{label:"Rehearsing a conversation in my head",emoji:"🎭",cat:"Social",theme:"communication",frame:"running stakeholder simulations before the actual meeting"},
+{label:"Doing absolutely nothing",emoji:"🫥",cat:"Wellbeing",theme:"restraint",frame:"resisting the urge to turn every moment into a deliverable"}
+];
+const cats=["All","At home","Social","Productivity","Wellbeing","Chaos"];
+let selected=[],active=5,filter="All",version=0,extraLinkedin=false;
+const $=id=>document.getElementById(id);
+function getActive(){return items[active]||items[0]}
+function renderCarousel(){
+ const it=getActive(),left=items[(active-1+items.length)%items.length],right=items[(active+1)%items.length];
+ $("feature").innerHTML=`<div class="emoji">${it.emoji}</div><div class="name">${escapeHtml(it.label)}</div><div class="hint">${selected.includes(it.label)?"✓ Selected · click to remove":"Click card below to select"}</div>`;
+ $("feature").style.cursor="pointer";$("feature").onclick=()=>toggle(it.label);
+ $("sideLeft").innerHTML=`<span class="emoji">${left.emoji}</span><span>${escapeHtml(left.label)}</span>`;$("sideRight").innerHTML=`<span class="emoji">${right.emoji}</span><span>${escapeHtml(right.label)}</span>`;
+ $("sideLeft").onclick=()=>{active=(active-1+items.length)%items.length;renderCarousel()};$("sideRight").onclick=()=>{active=(active+1)%items.length;renderCarousel()};
+ $("dots").innerHTML=items.slice(0,7).map((_,i)=>`<span class="dot ${Math.floor(active/Math.max(1,Math.ceil(items.length/7)))===i?"active":""}"></span>`).join("");
+}
+function renderFilters(){$("filters").innerHTML=cats.map(c=>`<button class="filter ${filter===c?"active":""}" data-cat="${c}">${c}</button>`).join("");document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{filter=b.dataset.cat;renderFilters();renderGrid()})}
+function renderGrid(){
+ const visible=items.filter(it=>filter==="All"||it.cat===filter);
+ $("moments").innerHTML=visible.map(it=>{let s=selected.includes(it.label);return `<button class="moment ${s?"selected":""}" data-label="${escapeHtml(it.label)}" ${!s&&selected.length>=3?"disabled":""}><span class="emoji">${it.emoji}</span><span class="label">${escapeHtml(it.label)}</span>${s?'<span class="check">✓</span>':""}</button>`}).join("");
+ document.querySelectorAll(".moment").forEach(b=>b.onclick=()=>toggle(b.dataset.label));
+}
+function toggle(label){
+ if(selected.includes(label))selected=selected.filter(x=>x!==label);
+ else if(selected.length<3)selected.push(label);
+ else{$("status").textContent="Three moments is the limit — remove one to make room.";return}
+ $("counter").textContent=`${selected.length}/3 selected`;$("counter").classList.toggle("full",selected.length===3);
+ $("selectionHint").textContent=selected.length===3?"Three moments. One storyline. Let's make this sound life-changing.":"Choose up to three moments. The magic is in the connection between them.";
+ $("status").textContent="";renderCarousel();renderGrid();version=0;extraLinkedin=false;generate();
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const hooks=["A strange thing happens when you stop measuring a day by its optics.","Not every leadership lesson arrives in a boardroom.","Today reminded me that growth rarely announces itself.","I've been thinking about the difference between being busy and becoming better.","A small moment today gave me an unexpectedly large lesson."];
+const endings=["Turns out, the work is not always to control the outcome. Sometimes it is to become someone who can sit with the uncertainty.","Progress is not always a dramatic leap. Sometimes it is a quieter relationship with the process.","I used to look for growth in milestones. Lately, I notice it in the moments I would normally overlook.","The ordinary day was the case study. I was, apparently, both the researcher and the target audience."];
+const lessons={
+uncertainty:["Stay present when the status hasn't changed.","Don't confuse visibility with progress.","Keep perspective when the timeline is outside your control."],
+performance:["Feedback is useful, but so is knowing when to log off.","Consistency is built through small decisions, not heroic speeches.","A reset is part of the system, not a failure of it."],
+communication:["Clarity begins before the conversation.","Not every draft needs to become a message.","Emotional bandwidth is a resource worth managing."],
+restraint:["Rest is not the opposite of ambition.","Not every hour needs to justify its existence.","Recovery is infrastructure, not a reward."],
+systems:["Small systems make difficult things repeatable.","Momentum is often a design problem, not a personality trait.","Consistency beats the occasional burst of enthusiasm."],
+adaptability:["A plan is a tool, not a personality.","Good decisions account for the conditions you actually have.","Flexibility is useful when the map stops being useful."],
+default:["Progress can be quiet and still be real.","The process teaches you what the outcome cannot.","Small moments reveal the systems we bring to bigger challenges."]
+};
+function makePost(){
+ if(!selected.length)return "Your next breakthrough may be hiding in the most ordinary part of your day.\n\nChoose up to three moments on the left. I'll connect them into one deeply unnecessary lesson about life, leadership, and becoming your best self.";
+ const chosen=selected.map(label=>items.find(i=>i.label===label)||{label,emoji:"✨",theme:"default",frame:"turning an ordinary moment into an unexpected case study"});
+ const themeCount={};chosen.forEach(x=>themeCount[x.theme]=(themeCount[x.theme]||0)+1);
+ const dominant=Object.entries(themeCount).sort((a,b)=>b[1]-a[1])[0][0];
+ const frames=chosen.map(x=>x.frame);
+ const hook=hooks[(version+selected.length)%hooks.length];
+ const openers=[
+  `Today, I found myself ${frames[0]}. On paper, it was a small thing. In practice, it became a surprisingly useful mirror.`,
+  `My unofficial leadership lab looked a little different today: ${frames[0]}. No keynote. No framework slide. Just real life doing what real life does.`,
+  `Today's professional development session was not on my calendar. It looked more like ${frames[0]}.`
+ ];
+ let story=openers[version%openers.length];
+ if(chosen.length>1){
+   story+=`\n\nThen came ${frames[1]}. Different situation, same underlying question: how do I respond when the day refuses to follow the plan?`;
+ }
+ if(chosen.length>2){
+   story+=`\n\nAnd finally, ${frames[2]}. By then, the pattern was hard to ignore: these weren't three unrelated moments. They were one tiny case study in how I navigate being human.`;
+ }else{
+   story+=`\n\nIt made me wonder how often the most ordinary moments are quietly rehearsing the skills we later claim to use at work.`;
+ }
+ const ls=lessons[dominant]||lessons.default;
+ let takeaway=`\n\nWhat I'm taking into the next chapter:\n\n1. ${ls[version%ls.length]}\n2. ${ls[(version+1)%ls.length]}\n3. ${ls[(version+2)%ls.length]}`;
+ let ending=`\n\n${endings[version%endings.length]}`;
+ if(extraLinkedin) ending=`\n\nA vulnerable reminder that even the most ambitious among us are still learning to navigate the messy middle. Grateful for the lessons, the process, and the version of myself that keeps showing up.\n\n${endings[(version+1)%endings.length]}`;
+ const hashtags="\n\n#PersonalGrowth #Leadership #Mindset #ContinuousLearning #TheProcess";
+ return `${hook}\n\n${story}${takeaway}${ending}${hashtags}`;
+}
+function generate(){$("postBody").textContent=makePost()}
+$("prev").onclick=()=>{active=(active-1+items.length)%items.length;renderCarousel()};$("next").onclick=()=>{active=(active+1)%items.length;renderCarousel()};
+$("addCustom").onclick=()=>{let val=$("customInput").value.trim();if(!val)return;if(selected.length>=3){$("status").textContent="You're at 3/3. Remove a moment before adding another.";return}if(!items.some(x=>x.label.toLowerCase()===val.toLowerCase()))items.push({label:val,emoji:"✨",cat:"Chaos",theme:"default",frame:"turning this ordinary experience into an unexpectedly useful case study"});filter="All";renderFilters();active=items.length-1;selected.push(items[items.length-1].label);$("customInput").value="";$("counter").textContent=`${selected.length}/3 selected`;renderCarousel();renderGrid();generate()};
+$("customInput").addEventListener("keydown",e=>{if(e.key==="Enter")$("addCustom").click()});
+$("reroll").onclick=()=>{version++;generate();$("status").textContent="A fresh narrative, same very ordinary day."};
+$("moreLinkedin").onclick=()=>{extraLinkedin=!extraLinkedin;version++;generate();$("status").textContent=extraLinkedin?"Vulnerability and humblebrag settings: activated.":"Back to the standard level of self-importance."};
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText($("postBody").textContent);$("status").textContent="Copied. Go forth and overinterpret your day."}catch(e){let r=document.createRange();r.selectNodeContents($("postBody"));let s=getSelection();s.removeAllRanges();s.addRange(r);$("status").textContent="Select the highlighted text and press ⌘C (Mac) or Ctrl+C (Windows)."}};
+renderFilters();renderCarousel();renderGrid();generate();
+</script>
+</body>
+</html>
