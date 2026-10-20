@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b12">
+  <meta name="description" content="Turn your questionable daily habits into an overfunded, buzzword-heavy startup pitch.">
+  <title>Pivot — The Performative Startup Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root { color-scheme: dark; --ink:#f6f4ff; --muted:#a5a2b8; --panel:#151521; --line:#2a293b; --lime:#d4ff57; --pink:#ff70c5; }
+    * { box-sizing:border-box }
+    body { margin:0; background:radial-gradient(ellipse at 15% 0%,#24203f 0,transparent 38%),radial-gradient(ellipse at 95% 25%,#2b1830 0,transparent 28%),#0b0b12; color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .glass { background:rgba(21,21,33,.88); border:1px solid var(--line); box-shadow:0 24px 70px rgba(0,0,0,.22); }
+    .eyebrow { color:var(--lime); text-transform:uppercase; letter-spacing:.18em; font-size:.7rem; font-weight:800; }
+    .chip { border:1px solid #38364c; background:#171724; color:#c8c5d8; transition:all .16s ease; }
+    .chip:hover { border-color:#9a94b7; transform:translateY(-1px); }
+    .chip[aria-pressed="true"] { border-color:var(--lime); background:rgba(212,255,87,.1); color:var(--lime); box-shadow:inset 0 0 0 1px rgba(212,255,87,.12); }
+    .vibe[aria-pressed="true"] { border-color:var(--pink); color:#ff9cda; background:rgba(255,112,197,.1); }
+    .primary { background:var(--lime); color:#17180c; font-weight:900; transition:transform .16s,filter .16s; }
+    .primary:hover { transform:translateY(-2px); filter:brightness(1.04); }
+    .primary:disabled { opacity:.65; cursor:wait; transform:none; }
+    .field { width:100%; border:1px solid #3a384d; background:#0e0e17; color:var(--ink); border-radius:12px; padding:12px 14px; outline:none; }
+    .field:focus { border-color:var(--lime); box-shadow:0 0 0 3px rgba(212,255,87,.1); }
+    .post { background:#f8f7fb; color:#24232b; }
+    .post-muted { color:#777482; }
+    .post-rule { border-color:#e7e5ed; }
+    .tag { background:#edebf3; color:#625d70; }
+    .output-copy { white-space:pre-wrap; overflow-wrap:anywhere; }
+    .dots::after { content:""; animation:dots 1.2s steps(4,end) infinite; }
+    @keyframes dots { 0%{content:""} 25%{content:"."} 50%{content:".."} 75%,100%{content:"..."} }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8">
+    <a href="#" class="flex items-center gap-3 no-underline text-white" aria-label="Pivot home">
+      <span class="grid h-10 w-10 place-items-center rounded-xl bg-lime-300 text-lg font-black text-black" style="background:var(--lime)">P.</span>
+      <span class="font-black tracking-tight text-lg">pivot<span style="color:var(--lime)">™</span></span>
+    </a>
+    <span class="hidden rounded-full border px-3 py-2 text-xs font-bold sm:inline-flex" style="border-color:#39364b;color:#b9b5ca">PRE-SEED DELUSION ENGINE <span class="ml-2" style="color:var(--lime)">● LIVE</span></span>
+    <a href="#generator" class="text-sm font-semibold no-underline" style="color:#c9c6d8">Launch app ↘</a>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-5 pb-16 sm:px-8">
+    <section class="grid items-center gap-10 py-10 md:grid-cols-[1.08fr_.92fr] md:py-16">
+      <div>
+        <div class="eyebrow mb-5 flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full" style="background:var(--pink)"></span> Your bad habits. Our next unicorn.</div>
+        <h1 class="max-w-3xl text-5xl font-black leading-[.98] tracking-[-.055em] sm:text-6xl lg:text-7xl">You’re not lazy.<br><span style="color:var(--lime)">You’re pre-scale.</span></h1>
+        <p class="mt-6 max-w-xl text-lg leading-8" style="color:#b7b3c9">Turn your deeply unremarkable daily behavior into a category-defining, AI-adjacent, synergy-optimized venture. Your therapist said “habits.” We heard “market opportunity.”</p>
+        <div class="mt-7 flex flex-wrap gap-3 text-xs font-bold">
+          <span class="rounded-full px-3 py-2" style="background:#242236;color:#e5e1f4">✦ Zero self-awareness required</span>
+          <span class="rounded-full px-3 py-2" style="background:#242236;color:#e5e1f4">↗ 100% vibe-backed</span>
+          <span class="rounded-full px-3 py-2" style="background:#242236;color:#e5e1f4">⌁ No revenue, no problem</span>
+        </div>
+      </div>
+      <div class="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
+        <div class="absolute right-0 top-0 h-36 w-36 rounded-full blur-3xl" style="background:rgba(212,255,87,.12)"></div>
+        <div class="relative">
+          <div class="mb-6 flex items-center justify-between"><span class="eyebrow">Pitch metrics</span><i data-lucide="chart-no-axes-combined" class="h-5 w-5" style="color:var(--lime)"></i></div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-2xl p-4" style="background:#0e0e17;border:1px solid #2d2b3f"><p class="text-xs" style="color:var(--muted)">TAM (your bedroom)</p><p class="mt-2 text-3xl font-black">$∞B</p><p class="mt-1 text-xs" style="color:var(--lime)">Aggressively addressable</p></div>
+            <div class="rounded-2xl p-4" style="background:#0e0e17;border:1px solid #2d2b3f"><p class="text-xs" style="color:var(--muted)">Burn rate</p><p class="mt-2 text-3xl font-black">1 nap</p><p class="mt-1 text-xs" style="color:var(--pink)">Per sprint, minimum</p></div>
+            <div class="col-span-2 rounded-2xl p-4" style="background:linear-gradient(100deg,rgba(212,255,87,.1),rgba(255,112,197,.06));border:1px solid #3a3947">
+              <div class="flex items-center justify-between gap-3"><div><p class="text-sm font-bold">Founder-market fit</p><p class="mt-1 text-xs" style="color:var(--muted)">You have the problem. You are the problem.</p></div><span class="text-2xl">🫡</span></div>
+              <div class="mt-4 h-2 overflow-hidden rounded-full" style="background:#2d2a3d"><div class="h-full w-[97%] rounded-full" style="background:var(--lime)"></div></div>
+              <p class="mt-2 text-right text-xs font-bold" style="color:var(--lime)">97% narrative-market fit</p>
+            </div>
+          </div>
+          <p class="mt-5 text-xs leading-5" style="color:#817d96">* Metrics independently verified by the Department of Making Things Up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="generator" class="grid scroll-mt-6 gap-6 lg:grid-cols-[.92fr_1.08fr]">
+      <div class="glass rounded-3xl p-5 sm:p-7">
+        <div class="mb-7 flex items-start justify-between gap-4"><div><div class="eyebrow mb-2">01 / Source material</div><h2 class="text-2xl font-black tracking-tight">What’s your unfair advantage?</h2><p class="mt-2 text-sm leading-6" style="color:var(--muted)">Select the behaviors your personal brand team would prefer you keep private.</p></div><span class="rounded-xl p-3" style="background:#252238;color:var(--lime)"><i data-lucide="mouse-pointer-click" class="h-5 w-5"></i></span></div>
+        <div id="habitChips" class="flex flex-wrap gap-2" aria-label="Daily habits"></div>
+        <label for="customHabit" class="mt-6 mb-2 block text-sm font-bold">Have a bespoke failure mode?</label>
+        <div class="flex gap-2"><input id="customHabit" class="field min-w-0" type="text" maxlength="120" placeholder="Or add your own lazy habit..." autocomplete="off"><button id="addHabit" class="rounded-xl px-4 font-black" style="background:#29273a;color:var(--lime)" aria-label="Add custom habit">+</button></div>
+        <p id="customHint" class="mt-2 text-xs" style="color:var(--muted)">Up to 120 characters. Make your underachievement bespoke.</p>
+
+        <div class="mt-8 border-t pt-6" style="border-color:var(--line)">
+          <div class="eyebrow mb-2">02 / Brand delusion</div><h3 class="text-lg font-extrabold">Choose your founder energy</h3><p class="mt-1 text-sm" style="color:var(--muted)">Optional modifiers. More jargon, less accountability.</p>
+          <div id="vibeChips" class="mt-4 flex flex-wrap gap-2"></div>
+        </div>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <button id="chaosBtn" class="flex flex-1 items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-extrabold transition hover:-translate-y-0.5" style="border-color:#49445e;color:#ff9cda;background:#211b2c"><i data-lucide="dices" class="h-4 w-4"></i> Roll the Dice / Chaos Mode</button>
+          <button id="clearBtn" class="rounded-xl border px-4 py-3 text-sm font-bold" style="border-color:#38364b;color:#aaa6bc">Reset</button>
+        </div>
+        <button id="generateBtn" class="primary mt-5 flex w-full items-center justify-center gap-2 rounded-xl px-5 py-4 text-base"><i data-lucide="zap" class="h-5 w-5"></i><span>Disrupt My Life (Generate Pitch)</span></button>
+        <p class="mt-3 text-center text-xs" style="color:#77738b">No account. No backend. No actual venture capital.</p>
+      </div>
+
+      <div class="glass min-h-[560px] rounded-3xl p-5 sm:p-7">
+        <div class="mb-5 flex items-center justify-between gap-3"><div><div class="eyebrow mb-2">03 / Your new reality</div><h2 class="text-2xl font-black tracking-tight">The pitch deck is you.</h2></div><span class="rounded-full px-3 py-1.5 text-xs font-bold" style="background:#242236;color:var(--lime)">LIVE PREVIEW</span></div>
+        <div id="emptyState" class="flex min-h-[430px] flex-col items-center justify-center rounded-2xl border border-dashed px-6 text-center" style="border-color:#39364b">
+          <div class="mb-5 grid h-16 w-16 place-items-center rounded-2xl text-3xl" style="background:#252238">🦄</div>
+          <h3 class="text-xl font-black">Your pivot starts here.</h3>
+          <p class="mt-2 max-w-sm text-sm leading-6" style="color:var(--muted)">Pick a few habits, choose your preferred flavor of delusion, and turn the personal into scalable IP.</p>
+          <div class="mt-6 flex flex-wrap justify-center gap-2"><span class="tag rounded-full px-3 py-1 text-xs">Founder story</span><span class="tag rounded-full px-3 py-1 text-xs">TAM inflation</span><span class="tag rounded-full px-3 py-1 text-xs">Hashtag strategy</span></div>
+        </div>
+        <div id="loadingState" class="hidden flex min-h-[430px] flex-col items-center justify-center text-center">
+          <div class="mb-5 h-12 w-12 animate-spin rounded-full border-4 border-t-transparent" style="border-color:var(--lime);border-top-color:transparent"></div><h3 id="loadingText" class="text-lg font-black dots">Leveraging synergies</h3><p class="mt-2 text-sm" style="color:var(--muted)">Your lived experience is being aggressively monetized.</p>
+        </div>
+        <article id="resultCard" class="post hidden overflow-hidden rounded-2xl shadow-2xl">
+          <div class="flex items-center justify-between border-b px-5 py-4 post-rule"><div class="flex items-center gap-3"><div class="grid h-11 w-11 place-items-center rounded-xl text-sm font-black" style="background:#20202a;color:#d4ff57">P.</div><div><p class="font-extrabold leading-tight">Pivot Founder Network</p><p class="post-muted mt-1 text-xs">Public post · just now</p></div></div><span class="rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wider" style="background:#e7f8bd;color:#42561b">Unicorn pending</span></div>
+          <div class="px-5 py-5 sm:px-6">
+            <div class="mb-4 flex flex-wrap items-center gap-2"><span id="companyBadge" class="rounded-md px-2.5 py-1 text-xs font-black" style="background:#242236;color:#d4ff57">Dopamyn.io</span><span id="stageBadge" class="tag rounded-md px-2.5 py-1 text-xs font-bold">PRE-SEED</span></div>
+            <h3 id="companyName" class="text-3xl font-black tracking-tight">Dopamyn.io</h3>
+            <p id="founderTitle" class="mt-2 text-sm font-bold" style="color:#635f70">Chief Micro-Content Research Strategist</p>
+            <div class="my-5 border-t post-rule"></div>
+            <div class="space-y-4 text-sm leading-7">
+              <p id="hook" class="font-bold"></p>
+              <p id="painPoint"></p>
+              <p id="mission"></p>
+              <div class="rounded-xl p-4" style="background:#efedf5"><p class="text-[10px] font-black uppercase tracking-[.16em]" style="color:#777184">The ask / stage</p><p id="ask" class="mt-1 font-extrabold leading-6"></p></div>
+              <p id="hashtags" class="font-bold" style="color:#4267a8"></p>
+            </div>
+            <div class="mt-6 flex items-center justify-between border-t pt-4 post-rule text-xs post-muted"><span>♡ Celebrate this disruption</span><span>↗ 0 comments · 0 exits</span></div>
+          </div>
+        </article>
+        <div id="resultActions" class="mt-4 hidden flex-col gap-3 sm:flex-row">
+          <button id="copyBtn" class="primary flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm"><i data-lucide="copy" class="h-4 w-4"></i> Copy LinkedIn Post</button>
+          <button id="regenBtn" class="rounded-xl border px-4 py-3 text-sm font-bold" style="border-color:#3a384c;color:#d2cfe0">One more pivot ↻</button>
+        </div>
+        <p id="copyFeedback" class="mt-3 hidden text-center text-sm font-bold" style="color:var(--lime)" role="status" aria-live="polite">✓ Post Copied to Clipboard!</p>
+        <p id="errorMessage" class="mt-3 hidden text-center text-sm" style="color:#ff9cda" role="status"></p>
+      </div>
+    </section>
+    <footer class="mt-12 flex flex-col gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between" style="border-color:#292738;color:#77738b"><p>© 2026 Pivot™ — Making personal shortcomings investable since approximately yesterday.</p><p>Built on vibes. Hosted on GitHub Pages. <span style="color:var(--lime)">No backend required.</span></p></footer>
+  </main>
+
+  <script>
+  (() => {
+    "use strict";
+    const habits = [
+      { name:"Doomscrolling in bed until 2 AM", company:["Dopamyn.io","Scrollchemy","NightShift AI"], title:"Chief Micro-Content Research Strategist", pain:"Most people see scrolling in bed as unproductive. I saw a $40B gap in dark-mode algorithmic human sentiment analysis.", mission:"We’re building a frictionless, pillow-native attention intelligence layer that converts late-night thumb velocity into actionable consumer insight. Sleep is legacy infrastructure.", ask:"Bootstrapped on vibes | Raising $4M Series A on a napkin SAFE", hook:"I accidentally built a company while avoiding my circadian rhythm. Here’s what nobody tells you about disruption:" },
+      { name:"Leaving unread emails at 14,320", company:["InboxZeroish","Unread Capital","ReplyLater"], title:"VP of Asynchronous Stakeholder Deferral", pain:"Email is broken. The average professional has an inbox; I have a longitudinal archive of unmade decisions and a 14,320-message data moat.", mission:"Our proprietary avoidance stack transforms unread badges into a predictive workflow prioritization platform. We don’t ignore opportunities. We incubate them indefinitely.", ask:"Raising $2.5M pre-seed to disrupt the reply-all industrial complex", hook:"I stopped chasing inbox zero. The inbox started chasing me. That’s product-market fit." },
+      { name:"Procrastinating by cleaning the baseboards", company:["Baseboard Labs","CleanSlate VC","DustOps"], title:"Founder & Chief Peripheral Productivity Officer", pain:"Deep work is overrated when the baseboards are dusty. We identified a whitespace opportunity at the intersection of avoidance behavior and premium-grade grout hygiene.", mission:"We’re operationalizing domestic micro-tasks as a gamified productivity arbitrage layer. Every wiped skirting board is one less uncomfortable deliverable.", ask:"Seeking $1.8M in seed funding and a strategic partnership with a mop brand", hook:"I cleaned the entire apartment instead of sending one email. Naturally, I started a company." },
+      { name:"Microwaving a burrito for dinner", company:["MicroMeal.ai","BurritoOS","WrapStack"], title:"Chief Thermal Nutrition Optimization Architect", pain:"Food delivery has 35 minutes of latency. My microwave burrito has a 90-second deployment window and an aggressively molten core.", mission:"We’re building an AI-powered, foil-adjacent meal orchestration ecosystem for time-poor founders who consider a plate optional.", ask:"Raising $6M to vertically integrate frozen carbohydrates", hook:"I didn’t meal prep. I pioneered sub-two-minute caloric infrastructure." },
+      { name:"Pretending to type fast during a Zoom call", company:["Keystroke Ventures","ClickClack.ai","MeetingOS"], title:"Director of Visible Productivity & Remote Presence", pain:"Remote work lacks observable hustle signals. Our research—conducted while muted—found that keyboard acoustics can simulate 400% more strategic momentum.", mission:"We’re creating an ambient work-signaling platform that turns frantic typing into stakeholder confidence, regardless of whether the document is open.", ask:"Raising a $3M seed round to make performative busyness enterprise-ready", hook:"The camera was on. The document was blank. The vision was enormous." },
+      { name:"Napping during work hours with mouse jiggler active", company:["NapStack","RestMode Systems","JiggleOps"], title:"Chief Distributed Recovery & Cursor Continuity Officer", pain:"Knowledge workers are exhausted, yet corporate dashboards demand motion. We found a massive gap between actual output and the appearance of being available.", mission:"Our passive-presence protocol decouples human restoration from green status indicators. The cursor keeps shipping while the founder enters low-power mode.", ask:"Raising $5M for the future of stealth wellness infrastructure", hook:"I took a nap and called it a platform. The mouse never stopped believing." },
+      { name:"Ordering takeout because washing dishes feels impossible", company:["DishAversion","Spoonless","TakeoutOS"], title:"Chief Post-Meal Logistics Avoidance Officer", pain:"The restaurant industry solved hunger but not the emotional complexity of a sink full of dishes. That’s a multi-billion-dollar dishwashing-shaped blind spot.", mission:"We’re abstracting cleanup from the food experience through a scalable convenience layer. Our north star is zero dishes and infinite delivery fees.", ask:"Raising $3.2M to disrupt the sink-to-stomach value chain", hook:"I outsourced dishwashing to a restaurant. We call that asset-light operations." },
+      { name:"Staring blankly at the fridge for 5 minutes", company:["FridgeMind","ColdStart Labs","ShelfAware"], title:"Chief Refrigerated Decision Intelligence Officer", pain:"Consumers make 35,000 decisions a day, including opening the fridge four times hoping a new option has been deployed.", mission:"We’re developing a real-time cold-storage discovery interface that leverages repeated door openings as high-intent signals. The snack is the network effect.", ask:"Raising $2M pre-seed to bring enterprise-grade indecision to the kitchen", hook:"I opened the fridge again. This time, I brought a thesis." },
+      { name:"Watching the same comfort show for the 11th time", company:["ReWatch.ai","ComfortLoop","PlotArmor"], title:"Head of Nostalgia-as-a-Service", pain:"Streaming platforms optimize for discovery. We optimize for knowing exactly what happens and watching anyway. Familiarity is an underserved market.", mission:"Our proprietary emotional re-engagement loop turns reruns into a retention flywheel, with zero onboarding and 100% predictable plot outcomes.", ask:"Raising $4.4M to make the skip-intro button obsolete", hook:"I rewatched the same show for the eleventh time. Churn could never." },
+      { name:"Buying a planner instead of doing the tasks", company:["Planfluencer","TaskCosplay","Noted.vc"], title:"Chief Intentionality & Stationery Monetization Officer", pain:"Task management tools focus on execution. Nobody is building for the much larger market of beautifully documenting future execution.", mission:"We’re unlocking latent productivity through premium paper goods, color-coded optimism, and a calendar that functions as a vision board.", ask:"Seeking $1.2M and an exclusive gel-pen distribution deal", hook:"The plan was immaculate. The tasks remain in stealth." },
+      { name:"Snoozing the alarm six times", company:["SnoozeFlow","LaterLabs","Alarmingly"], title:"VP of Circadian Delay & Morning Resilience", pain:"Traditional alarms treat waking up as binary. Our users require a flexible, multi-stage negotiation with consciousness.", mission:"We’re turning the snooze button into a personalized wake-readiness journey powered by aspirational morning routines that start tomorrow.", ask:"Raising $2.7M to disrupt the first 45 minutes of every day", hook:"I didn’t miss the morning. I extended its onboarding sequence." },
+      { name:"Keeping 37 browser tabs open", company:["TabStack","ContextDebt.ai","OpenLoop"], title:"Chief Parallel Context Retention Officer", pain:"The modern knowledge worker is forced to choose between focus and the illusion of infinite context. I refuse to close a tab and lose a potential future.", mission:"We’re building a distributed external-brain substrate where every open tab is a strategic option and RAM is a growth lever.", ask:"Raising $7M to bring venture-scale chaos to browser management", hook:"Some people close tabs. I build optionality." },
+      { name:"Saying “let’s circle back” instead of deciding", company:["CircleBack Labs","LoopLogic","Decidely"], title:"Chief Strategic Deferral & Alignment Architect", pain:"Decisions create accountability. Alignment creates meetings. We believe the future belongs to teams that can perpetually operationalize the second without the first.", mission:"Our meeting-native decision deferral platform ensures every hard choice is transformed into a recurring calendar event.", ask:"Seeking $4M to scale our proprietary loop-based operating model", hook:"We haven’t decided yet, and that’s exactly the strategy." },
+      { name:"Using the exercise mat as bedroom decor", company:["Matropolitan","Fit-ish","Dormant Athletics"], title:"Founder, Passive Fitness Infrastructure", pain:"Fitness equipment has historically required movement. We’re challenging that assumption with a category-defining floor-based wellness asset.", mission:"Our ambient fitness model delivers the psychological benefits of owning exercise equipment without the operational overhead of exercising.", ask:"Raising $1.5M to make aspirational wellness shelf-stable", hook:"My fitness journey has a strong physical footprint. Just not on my body." },
+      { name:"Forgetting why I walked into a room", company:["RecallOS","Roomnesia","ContextSwitch"], title:"Chief Intentional Mobility & Memory Systems Officer", pain:"Human cognition loses context during short-distance transitions. We’re treating every doorway as a high-friction handoff in the brain’s operating system.", mission:"We’re building a context restoration layer for people who arrive in rooms with no idea why, but with enormous conviction.", ask:"Raising $2.9M to put enterprise-grade memory in the hallway", hook:"I entered a room and lost the roadmap. So I made it the roadmap." },
+      { name:"Refreshing a tracking page every 4 minutes", company:["ParcelPulse","Refresh Capital","WhereIsIt.ai"], title:"VP of Real-Time Anticipation Analytics", pain:"Shipping providers offer status updates. They don’t offer the illusion of influence that comes from refreshing the page 90 times.", mission:"Our anticipation intelligence platform converts repeated refresh behavior into a premium, engagement-rich delivery ritual.", ask:"Seeking $3.6M to vertically integrate waiting", hook:"The package hadn’t moved. Our engagement metrics were up 900%." },
+      { name:"Leaving laundry in the washing machine overnight", company:["DampStack","SpinCycle Labs","Fresh-ish"], title:"Chief Textile Lifecycle Extension Officer", pain:"Laundry workflows assume a linear path from wash to dry. Real households need a robust holding pattern with notes of regret.", mission:"We’re building a resilient garment reprocessing loop for the circular economy. Every rewash is a recurring-revenue opportunity.", ask:"Raising $2.1M to make the second wash a premium feature", hook:"We found product-market fit in the spin cycle. Literally." },
+      { name:"Saying “you too” when the waiter says enjoy your meal", company:["SocialPatch","AutoReply Human","CringeAI"], title:"Chief Conversational Recovery & Human Protocol Officer", pain:"Human interaction is full of unpredictable edge cases. One misplaced ‘you too’ can generate hours of post-event analysis.", mission:"Our social recovery platform converts awkward micro-interactions into scalable resilience training and premium overthinking insights.", ask:"Raising $1.9M to automate the apology you make in your head", hook:"I experienced a conversational bug in production. I’m building the patch." },
+      { name:"Taking a screenshot instead of saving the file properly", company:["ScreenshotOS","LaterArchive","Snapventory"], title:"Chief Visual Knowledge Hoarding Officer", pain:"File systems demand taxonomy and commitment. Screenshots let us capture infinite context with absolutely no retrieval strategy.", mission:"We’re building a screenshot-first knowledge layer for a generation that believes search will somehow solve everything later.", ask:"Raising $4.8M to disrupt folders with camera-roll infrastructure", hook:"I saved it for later. Later is now a 19,000-image archive." },
+      { name:"Eating shredded cheese straight from the bag", company:["CheeseFlow","SnackProtocol","DairyDash"], title:"Chief Frictionless Dairy Consumption Officer", pain:"The plate is an unnecessary interface between the consumer and cheese. We’re removing the middle layer.", mission:"Our direct-to-mouth snacking protocol reimagines refrigerated dairy as a high-velocity, low-ceremony nutrition channel.", ask:"Raising $2.2M to vertically integrate the cheese supply chain into my hand", hook:"I cut out the middleman. The middleman was a bowl." }
+    ];
+
+    const vibes = {
+      "Hustle Culture": {words:["10x","relentless execution","high-performance","grindset"], line:"Sleep is a feature request. Execution is the only KPI."},
+      "Thought Leader": {words:["paradigm-shifting","category-defining","narrative ownership","blue-ocean"], line:"I’ve been thinking deeply about something nobody asked me to think about."},
+      "Mindfulness Bro": {words:["intentionality","somatic","conscious scaling","inner operating system"], line:"I held space for the problem until it became a market."},
+      "Fractional C-Suite": {words:["fractional","cross-functional","strategic alignment","operationalize"], line:"As a fractional visionary, I’m disrupting the 3.5 days a week I’m available."}
+    };
+    const state = { selected:new Set(), selectedVibes:new Set(), custom:[], lastPitch:null };
+    const $ = id => document.getElementById(id);
+    const habitChips = $("habitChips"), vibeChips = $("vibeChips");
+
+    function makeChip(label, type, pressed, onToggle) {
+      const button = document.createElement("button");
+      button.type = "button"; button.className = `chip ${type === "vibe" ? "vibe" : ""} rounded-full px-3 py-2 text-left text-xs font-semibold`;
+      button.textContent = label; button.setAttribute("aria-pressed", String(pressed));
+      button.addEventListener("click", () => onToggle(!pressed));
+      return button;
+    }
+    function renderHabitChips() {
+      habitChips.replaceChildren();
+      habits.forEach((habit, index) => {
+        const button = makeChip(habit.name, "habit", state.selected.has(index), pressed => {
+          pressed ? state.selected.add(index) : state.selected.delete(index); renderHabitChips();
+        });
+        habitChips.append(button);
+      });
+      state.custom.forEach((name, index) => {
+        const button = makeChip("✦ " + name, "habit", state.selected.has("c"+index), pressed => {
+          pressed ? state.selected.add("c"+index) : state.selected.delete("c"+index); renderHabitChips();
+        });
+        habitChips.append(button);
+      });
+    }
+    function renderVibes() {
+      vibeChips.replaceChildren();
+      Object.keys(vibes).forEach(name => vibeChips.append(makeChip(name, "vibe", state.selectedVibes.has(name), pressed => {
+        pressed ? state.selectedVibes.add(name) : state.selectedVibes.delete(name); renderVibes();
+      })));
+    }
+    function addCustom() {
+      const field = $("customHabit"), name = field.value.trim();
+      if (!name) { field.focus(); $("customHint").textContent = "Type a habit first. We cannot disrupt an empty pipeline."; return; }
+      if (state.custom.some(h => h.toLowerCase() === name.toLowerCase()) || habits.some(h => h.name.toLowerCase() === name.toLowerCase())) {
+        $("customHint").textContent = "That habit is already in the portfolio."; return;
+      }
+      if (state.custom.length >= 30) { $("customHint").textContent = "Thirty custom habits. Your personal brand has enough material."; return; }
+      state.custom.push(name); state.selected.add("c" + (state.custom.length - 1)); field.value = ""; $("customHint").textContent = "Added to your personal IP portfolio."; renderHabitChips();
+    }
+    function random(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function shuffle(arr) { const copy = [...arr]; for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];} return copy; }
+    function chaos() {
+      state.selected.clear(); state.selectedVibes.clear();
+      const ids = shuffle(habits.map((_,i)=>i)).slice(0, 2 + Math.floor(Math.random()*2));
+      ids.forEach(i=>state.selected.add(i));
+      const vibeNames = shuffle(Object.keys(vibes)).slice(0, 1 + Math.floor(Math.random()*2));
+      vibeNames.forEach(v=>state.selectedVibes.add(v));
+      renderHabitChips(); renderVibes();
+      $("customHint").textContent = "Chaos deployed. Your founder narrative has been randomized.";
+    }
+    function getHabit(id) {
+      if (typeof id === "number") return {...habits[id], sourceName:habits[id].name};
+      const name = state.custom[Number(String(id).slice(1))];
+      const slug = name.replace(/[^a-z0-9]+/gi," ").trim();
+      return {name,sourceName:name,company:[slug.split(" ").slice(0,2).join("")+"OS", "VibeStack", "HabitDAO"],title:"Chief " + titleCase(slug.split(" ").slice(0,4).join(" ")) + " Optimization Officer",pain:`Most people treat “${name}” as a minor personal habit. We identified a massively underserved market at the intersection of human behavior, latent demand, and avoidable effort.`,mission:`We’re translating “${name}” into a scalable, frictionless, AI-adjacent experience that converts everyday behavior into actionable insights. Our roadmap is mostly vibes, but the ambition is enterprise-grade.`,ask:"Bootstrapped on vibes | Raising $2.4M pre-seed to scale the unscalable",hook:`I did “${name}” and discovered a category-defining opportunity. Let me explain:`};
+    }
+    function titleCase(str) { return str.replace(/\b\w/g, c=>c.toUpperCase()); }
+    function generatePitch() {
+      if (!state.selected.size) {
+        $("errorMessage").textContent = "Select at least one habit or hit Chaos Mode. Investors demand a founder origin story."; $("errorMessage").classList.remove("hidden"); return;
+      }
+      $("errorMessage").classList.add("hidden"); $("copyFeedback").classList.add("hidden");
+      $("emptyState").classList.add("hidden"); $("resultCard").classList.add("hidden"); $("resultActions").classList.add("hidden"); $("loadingState").classList.remove("hidden");
+      const btn = $("generateBtn"); btn.disabled = true;
+      const loading = ["Leveraging synergies","Drafting viral LinkedIn carousel","Securing pre-seed funding","Reframing basic survival as a platform","Adding AI to the napkin SAFE"];
+      let tick = 0; $("loadingText").textContent = loading[0]; $("loadingText").classList.add("dots");
+      const interval = setInterval(()=>{ tick=(tick+1)%loading.length; $("loadingText").textContent=loading[tick]; }, 480);
+      setTimeout(()=>{
+        clearInterval(interval); $("loadingText").classList.remove("dots"); $("loadingState").classList.add("hidden"); btn.disabled=false;
+        const chosen = [...state.selected].map(getHabit);
+        const primary = random(chosen), second = chosen.find(h=>h!==primary);
+        const allNames = chosen.map(h=>h.sourceName);
+        const vibeNames = [...state.selectedVibes];
+        const vibeWords = vibeNames.flatMap(v=>vibes[v].words);
+        const name = random(primary.company);
+        const title = vibeNames.includes("Fractional C-Suite") ? "Fractional " + primary.title : primary.title;
+        const combined = second ? ` By combining ${primary.sourceName.toLowerCase()} with ${second.sourceName.toLowerCase()}, we’re building a cross-functional behavior stack with a defensible moat of questionable decisions.` : "";
+        const vibeLine = vibeNames.length ? " " + random(vibeNames.map(v=>vibes[v].line)) : "";
+        const ask = chosen.length > 1 ? random(["Raising $4.2M to turn these behaviors into an integrated lifestyle platform","Seeking $6M to vertically integrate the human condition","Bootstrapped on vibes | Raising a $3M pre-seed for a multi-habit operating system"]) : primary.ask;
+        state.lastPitch = {
+          company:name, title, selected:allNames, hook:primary.hook,
+          pain:primary.pain + (second ? " " + second.pain : ""),
+          mission:primary.mission + combined + vibeLine,
+          ask,
+          hashtags:["#GrowthMindset","#Disruption","#FounderLife",...vibeWords.slice(0,2).map(w=>"#"+w.replace(/[^a-z0-9]/gi,""))].join(" ")
+        };
+        $("companyName").textContent=name; $("companyBadge").textContent=name; $("stageBadge").textContent=chosen.length>2?"PRE-SEED · MULTI-VERTICAL":"PRE-SEED";
+        $("founderTitle").textContent=title; $("hook").textContent=state.lastPitch.hook; $("painPoint").textContent=state.lastPitch.pain; $("mission").textContent=state.lastPitch.mission; $("ask").textContent=state.lastPitch.ask; $("hashtags").textContent=state.lastPitch.hashtags;
+        $("resultCard").classList.remove("hidden"); $("resultActions").classList.remove("hidden"); $("resultActions").classList.add("flex");
+        $("resultCard").scrollIntoView({behavior:"smooth",block:"nearest"});
+        if (window.lucide) window.lucide.createIcons();
+      }, 1450);
+    }
+    function formattedPost() {
+      const p=state.lastPitch; if(!p) return "";
+      return `🚀 ${p.company} | ${p.title}\n\n${p.hook}\n\n${p.pain}\n\n${p.mission}\n\n💸 ${p.ask}\n\n${p.hashtags}\n\n#BuildInPublic #StartupLife`;
+    }
+    async function copyPost() {
+      const text=formattedPost(); if(!text) return;
+      try {
+        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+        else {
+          const area=document.createElement("textarea"); area.value=text; area.style.position="fixed"; area.style.opacity="0"; document.body.append(area); area.select();
+          const success=document.execCommand("copy"); area.remove(); if(!success) throw new Error("Clipboard copy failed");
+        }
+        $("copyFeedback").textContent="✓ Post Copied to Clipboard!"; $("copyFeedback").classList.remove("hidden");
+      } catch (error) {
+        $("copyFeedback").textContent="Clipboard access blocked — select and copy the post text below."; $("copyFeedback").classList.remove("hidden");
+        const area=$("fallbackCopy"); area.value=text; area.classList.remove("hidden"); area.focus(); area.select();
+      }
+    }
+    function reset() {
+      state.selected.clear(); state.selectedVibes.clear(); state.custom=[]; state.lastPitch=null;
+      $("customHabit").value=""; $("customHint").textContent="Up to 120 characters. Make your underachievement bespoke.";
+      $("resultCard").classList.add("hidden"); $("resultActions").classList.add("hidden"); $("resultActions").classList.remove("flex"); $("copyFeedback").classList.add("hidden"); $("errorMessage").classList.add("hidden"); $("fallbackCopy").classList.add("hidden"); $("emptyState").classList.remove("hidden");
+      renderHabitChips(); renderVibes();
+    }
+    $("addHabit").addEventListener("click",addCustom);
+    $("customHabit").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addCustom();}});
+    $("chaosBtn").addEventListener("click",chaos);
+    $("clearBtn").addEventListener("click",reset);
+    $("generateBtn").addEventListener("click",generatePitch);
+    $("regenBtn").addEventListener("click",generatePitch);
+    $("copyBtn").addEventListener("click",copyPost);
+    renderHabitChips(); renderVibes();
+    if(window.lucide) window.lucide.createIcons();
+  })();
+  </script>
+  <textarea id="fallbackCopy" class="field hidden mx-auto mt-3 max-w-3xl" rows="8" aria-label="Generated post for manual copying"></textarea>
+</body>
+</html>
